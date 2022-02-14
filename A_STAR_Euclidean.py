@@ -36,7 +36,7 @@ try:
     pca = PCA(2)
     df = pca.fit_transform(tablica_dane)
 
-    label = kmeans(df, 5, 10000)
+    label = kmeans(df, 5, 100)
 
     u_labels = np.unique(label)
     for i in u_labels:
