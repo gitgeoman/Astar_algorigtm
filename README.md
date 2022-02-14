@@ -14,9 +14,23 @@ n=200 - new cases in area,
 k= 4, number of categories  (corresponding to the number of rescue teams). 
 
 
+
 The results of classification were visible below. Each figure presents following steps in iterative cicle of k-mean clustering with the distances calculated along the road network.  
+The concept of dijkstra algorithm based on euclidean distance. https://upload.wikimedia.org/wikipedia/commons/e/e4/DijkstraDemo.gif
+
+The result of clasification for parameters:
+n=200
+k=4
+i=5 (iterations)
+are visible below:
 ![image](https://user-images.githubusercontent.com/45630165/153832230-63cdd1a9-7b07-45a2-8965-99dee3aceebb.png)
 
 
-To comparis the results above classification were calculated with the distances calculated in euclidean space. (graph below)
+To comparis the results above classification were calculated with the euclidean distances calculated in euclidean space. (
 ![image](https://user-images.githubusercontent.com/45630165/153833054-0c2d4470-9c35-4f3a-99f3-bdb0a999a88a.png)
+The result of clasification for parameters
+n=200
+k=4
+i=5
+are visible below
+#tutaj link
