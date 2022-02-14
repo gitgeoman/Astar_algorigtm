@@ -48,7 +48,7 @@ n=4000
 k=4
 i=5 (iterations)
 are visible below:
-![image](https://user-images.githubusercontent.com/45630165/153856174-dab4548f-6c28-4746-a386-74ac400897a5.png)
+![image](https://user-images.githubusercontent.com/45630165/153856381-9089c253-c601-404b-9594-c8a7744b4a06.png)
 
 ##### Classification based the euclidean distance in road network
 
@@ -59,7 +59,8 @@ n=4000
 k=4
 i=5
 are visible below
-![image](https://user-images.githubusercontent.com/45630165/153856381-9089c253-c601-404b-9594-c8a7744b4a06.png)
+
+![image](https://user-images.githubusercontent.com/45630165/153856174-dab4548f-6c28-4746-a386-74ac400897a5.png)
 
 
 ##### Classification based the terrain and its passability parameters
