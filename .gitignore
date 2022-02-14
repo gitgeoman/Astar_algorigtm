@@ -112,3 +112,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+#parametry połączenia
+conn_data.py
+/conn_data.py
