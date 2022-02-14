@@ -8,6 +8,25 @@ The area of interest:
 This is part of Warsaw Poland where new cases of Covid-19 were noticed. Severeal hundreds of people neded help but it was not neccessary to  hospitalise them. Volunteers and rescue teams were divided in this area to provide help.
 
 On this area data were collected from OSM. 
+To comparis the results above classification were calculated with the euclidean distances calculated in euclidean space. 
+
+The result of clasification for parameters:
+n=200
+k=4
+i=5 (iterations)
+are visible below:
+![image](https://user-images.githubusercontent.com/45630165/153832230-63cdd1a9-7b07-45a2-8965-99dee3aceebb.png)
+
+
+
+![image](https://user-images.githubusercontent.com/45630165/153833054-0c2d4470-9c35-4f3a-99f3-bdb0a999a88a.png)
+The result of clasification for parameters
+n=200
+k=4
+i=5
+are visible below
+![image](https://user-images.githubusercontent.com/45630165/153853000-fe38fcf4-d055-4bd5-93f4-3763cec89371.png)
+
 
 To show the application of algorithm the number or new cases were set as 200, number or rescue teams available in the area of interst is four.
 n=200 - new cases in area,
@@ -19,19 +38,4 @@ The results of classification were visible below. Each figure presents following
 The concept of dijkstra algorithm based on euclidean distance.
 ![image](https://user-images.githubusercontent.com/45630165/153853080-f2992276-493a-465b-9c2c-d298299056ea.png)
 
-The result of clasification for parameters:
-n=200
-k=4
-i=5 (iterations)
-are visible below:
-![image](https://user-images.githubusercontent.com/45630165/153832230-63cdd1a9-7b07-45a2-8965-99dee3aceebb.png)
 
-
-To comparis the results above classification were calculated with the euclidean distances calculated in euclidean space. (
-![image](https://user-images.githubusercontent.com/45630165/153833054-0c2d4470-9c35-4f3a-99f3-bdb0a999a88a.png)
-The result of clasification for parameters
-n=200
-k=4
-i=5
-are visible below
-![image](https://user-images.githubusercontent.com/45630165/153853000-fe38fcf4-d055-4bd5-93f4-3763cec89371.png)
