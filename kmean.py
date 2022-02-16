@@ -2,11 +2,6 @@
 
 import numpy as np
 from scipy.spatial.distance import cdist
-from sklearn.datasets import load_digits
-from sklearn.decomposition import PCA
-from sklearn.cluster import KMeans
-import matplotlib.pyplot as plt
-import sys
 
 
 # Defining our function
@@ -29,7 +24,6 @@ def kmeans(x, k, no_of_iterations):
     for _ in range(no_of_iterations):
         centroids = []
         for idx in range(k):
-            # Updating Centroids by taking mean of Cluster it belongs to
             temp_cent = x[points == idx].mean(axis=0)
             centroids.append(temp_cent)
 
@@ -39,26 +33,3 @@ def kmeans(x, k, no_of_iterations):
         points = np.array([np.argmin(i) for i in distances])
 
     return points
-#
-#
-# np.set_printoptions(threshold=sys.maxsize)
-#
-# # Load Data
-# data = load_digits().data
-# # print('>>>>>>>>>>>>>', data.shape)
-#
-# pca = PCA(2)
-#
-# # Transform the data
-# df = pca.fit_transform(data)
-#
-# # Applying our function
-# label = kmeans(df, 10, 1000)
-#
-# # Visualize the results
-#
-# u_labels = np.unique(label)
-# for i in u_labels:
-#     plt.scatter(df[label == i, 0], df[label == i, 1], label=i)
-# plt.legend()
-# plt.show()

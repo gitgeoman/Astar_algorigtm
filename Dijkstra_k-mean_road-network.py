@@ -1,6 +1,6 @@
 import psycopg2
-from funkcje_do_bazy_danych import *
-from conn_data import user, password, host, port, database
+from DB_connection_functions import *
+from DB_connection_parameters import user, password, host, port, database
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt

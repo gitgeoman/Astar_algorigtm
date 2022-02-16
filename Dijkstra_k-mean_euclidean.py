@@ -2,12 +2,12 @@
 
 import psycopg2
 
-from conn_data import user, password, host, port, database
+from DB_connection_parameters import user, password, host, port, database
 import numpy as np
 
 from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
-from A_star import kmeans
+from kmean import kmeans
 
 try:
     connection = psycopg2.connect(user=user, password=password, host=host, port=port, database=database)
