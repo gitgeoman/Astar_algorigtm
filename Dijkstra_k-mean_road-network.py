@@ -1,16 +1,16 @@
 import psycopg2
 from DB_connection_functions import *
-from DB_connection_parameters import user, password, host, port, database
+from DB_connection_parameters import user1, password1, host1, port1, database1
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
 try:
-    connection = psycopg2.connect(user=user, password=password, host=host, port=port, database=database)
+    connection = psycopg2.connect(user=user1, password=password1, host=host1, port=port1, database=database1)
     cursor = connection.cursor()
 
     # ile punktów
-    n = 4000
+    n = 40
 
     # wybieram losowo 100 punktow z bazy danych (węzły) zapisuje ich indeksy jako liste do zmiennej x
     cursor.execute(
