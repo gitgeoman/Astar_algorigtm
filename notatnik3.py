@@ -12,7 +12,7 @@ try:
     cursor = connection.cursor()
 
     # ile punktow
-    n = 2
+    n = 5
     cursor.execute(
         # f'SELECT id, ST_AsText(geom) FROM public.centroidy_budynki ORDER BY random() limit {n}'
         f'SELECT id, ST_AsText(geom) FROM public.budynki_wawa_centroidy ORDER BY random() limit {n}'
@@ -84,31 +84,31 @@ try:
         return response
 
 
-    # distances = (
-    #     [[my_func(source, target) for target in df_punktow_siatki.target_linii] for source in
-    #      df_filtered.source_linii])
-
-    distances = [[[my_func(source, target)] for target in df_punktow_siatki.target_linii] for source in
-                 df_filtered.source_linii]
+    distances = [[[my_func(source, target)] for target in df_filtered.target_linii] for source in
+                 df_punktow_siatki.source_linii]
 
     print('\n\nOdległości po do każdego z centroidów z każdego z punktów: \n', distances)
 
     df_distances = pd.DataFrame(distances)
 
     print('\n\n', df_distances, '\n\n')
-    print('\n\n', df_distances.T)
+    # print('\n\n', df_distances.T)
 
-    df_distances = df_distances.T
-    df_distances.columns = df_filtered.source_linii
-    print('\n\n', df_distances)
+    # df_distances = df_distances.T
+    # df_distances.columns = df_filtered.source_linii
+    # print('\n\n to jest df_distances\n\n', df_distances)
+    #
+    # # zrobione jest zliczanie odległości miedzy wskazywanymi punktami siatki
+    # # tearaz do zrobienia grupowanie
 
-    # df_punktow_siatki = pd.DataFrame(
-    #     list(zip(indeksy_punktow_siatki, source_linii, target_linii, wspolrzedna_lini_siatki)),
-    #     columns=['indeksy_punktow_siatki', 'source_linii', 'target_linii', 'wspolrzedna_lini_siatki']
-    # )
+    klasyfikacja = np.array(
+        [np.argmin(i) for i in distances])  # wybieram do którego centroidu jest najblizej do punktu
 
-    # zrobione jest zliczanie odległości miedzy wskazywanymi punktami siatki
-    # tearaz do zrobienia grupowanie
+    df_klasyfikacja = pd.DataFrame(klasyfikacja)
+
+    print('\nWynik klasyfikacji: \n', klasyfikacja)
+
+    # klasyfikacja jest poprawiona 
 
 except(Exception, psycopg2.Error) as error:
     print("Próba połączenia zakończona niepowodzeniem", error)
