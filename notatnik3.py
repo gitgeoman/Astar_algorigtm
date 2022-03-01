@@ -12,14 +12,15 @@ try:
     cursor = connection.cursor()
 
     # ile punktow
-    n = 15
+    n = 500
     cursor.execute(
         # f'SELECT id, ST_AsText(geom) FROM public.centroidy_budynki ORDER BY random() limit {n}'
+        # f'SELECT id, ST_AsText(geom) FROM public.budynki_wawa_centroidy ORDER BY random() limit {n}'
         f'SELECT id, ST_AsText(geom) FROM public.budynki_wawa_centroidy ORDER BY random() limit {n}'
 
     )
     buildings_table = cursor.fetchall()
-
+    print(buildings_table)
     ############################ ROZPAKOWUJE DANE ############################
 
     indeksy_budynki = [column[0] for column in buildings_table]
@@ -90,12 +91,6 @@ try:
 
     distances = [[[my_func(source, target)] for target in df_filtered.target_linii] for source in
                  df_punktow_siatki.source_linii]
-
-    print('\n\nOdległości po do każdego z centroidów z każdego z punktów: \n', distances)
-
-    df_distances = pd.DataFrame(distances)
-
-    print('\n\n', df_distances, '\n\n')
 
     klasyfikacja = np.array(
         [np.argmin(i) for i in distances])  # wybieram do którego centroidu jest najblizej do punktu
@@ -174,6 +169,7 @@ try:
         print('\n\n\n\ndistances_loop \n>>>>>>>>>>>>>>>>>>>>>>>\n', distances_loop)
 
         klasyfikacja_loop = np.array([np.argmin(i) for i in distances_loop])
+        print('\nWynik klasyfikacji: \n', klasyfikacja_loop)
 
         df_sumaryczny_loop = pd.DataFrame(list(
             zip(indeksy_punktow_siatki, distances_loop, klasyfikacja_loop, A_to_sa_wspolrzedne_source_X,
@@ -199,13 +195,14 @@ try:
         groups = df_tmp.groupby('klasyfikacja')
         plt.subplot(3, 2, numer + 1)
         for name, group in groups:
-            plt.plot(group.coordsY, group.coordsX, marker='o', linestyle='', markersize=3, label=name)
+            plt.plot(group.A_to_sa_wspolrzedne_source_Y, group.A_to_sa_wspolrzedne_source_X, marker='o', linestyle='',
+                     markersize=3, label=name)
             # do zrobienia centroidy w każdej iteracji
-
         plt.title(numer)
     # plt.legend()
+    plt.grid()
     plt.show()
-
+    # do zrobienie -> wyniki na tle mapy
 
 except(Exception, psycopg2.Error) as error:
     print("Próba połączenia zakończona niepowodzeniem", error)
