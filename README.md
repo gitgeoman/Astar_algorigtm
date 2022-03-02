@@ -74,3 +74,12 @@ are visible below
 ![image](https://user-images.githubusercontent.com/45630165/153856174-dab4548f-6c28-4746-a386-74ac400897a5.png)
 
 ##### Classification based the terrain and its passability parameters
+
+The results of classification were visible below. Each figure presents following steps in iterative cicle of k-mean
+clustering with the distances calculated including selected terrain parameters.
+
+
+![image](https://user-images.githubusercontent.com/45630165/156350596-05134dc6-76b8-4c99-9d50-f8d45b872f91.png)
+
+
+
