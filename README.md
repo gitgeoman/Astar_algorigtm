@@ -87,12 +87,16 @@ graph network
 cost of graph lines were estimated based the terrain coverage elements inside square network.
 
 
-classification result:
-iter 1:
-![image](https://user-images.githubusercontent.com/45630165/156719832-90d41393-cdf8-437e-9ddf-e033478bc669.png)
-iter 2:
-![image](https://user-images.githubusercontent.com/45630165/156719850-f61795f7-6bc9-41db-b86d-313dec53f2b3.png)
-iter 3:
+classification result:</br>
+
+iter 1: </br>
+![image](https://user-images.githubusercontent.com/45630165/156719832-90d41393-cdf8-437e-9ddf-e033478bc669.png)</br>
+iter 2:</br>
+![image](https://user-images.githubusercontent.com/45630165/156719850-f61795f7-6bc9-41db-b86d-313dec53f2b3.png)</br>
+iter 3:</br>
+![image](https://user-images.githubusercontent.com/45630165/156720185-b1cbe98d-999f-4b8d-bbea-3ab491366a08.png)</br>
 
 
+	class value counter			
+![image](https://user-images.githubusercontent.com/45630165/156720370-faba5bfc-80e1-4ad7-aea2-08d69eed8448.png)
 
