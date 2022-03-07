@@ -41,19 +41,20 @@ The calculation is based the euclidean distance between the nodes of road networ
 #### Testing datased, area of interest
 
 The area of interest:
+![image](https://user-images.githubusercontent.com/45630165/156719155-5f2b781a-da41-4540-a57d-9edf7fdd9bf6.png)
+satelite preview
 ![image](https://user-images.githubusercontent.com/45630165/153831898-61d0604e-36f7-42e8-ba6b-a1f8a878ed18.png)
 
-This is part of Warsaw Poland where new cases of Covid-19 were noticed. Severeal hundreds of people neded help but it
+This is Warsaw - the capital of Poland where new cases of Covid-19 were noticed. Severeal hundreds of people neded help but it
 was not neccessary to hospitalise them. Volunteers and rescue teams were divided in this area to provide help.
 
-![image-3.png](attachment:image-3.png)
-
-On this area data were collected from OSM.
+The pandemic point location (random 500 buildings from AOI):
+![image](https://user-images.githubusercontent.com/45630165/156719346-f636e02d-0505-4821-9953-c69927382728.png)
 
 ##### Classification based the euclidean distance, euclidean space:
 
 The result of clasification for parameters:
-n=4000 k=4 i=5 (iterations)
+n=500 k=4 i=5 (iterations)
 are visible below:
 ![image](https://user-images.githubusercontent.com/45630165/153856381-9089c253-c601-404b-9594-c8a7744b4a06.png)
 
@@ -62,9 +63,11 @@ are visible below:
 The results of classification were visible below. Each figure presents following steps in iterative cicle of k-mean
 clustering with the distances calculated along the road network.
 
-The result of clasification for parameters n=4000 k=4 i=5 road network
-![image-4.png](attachment:image-4.png)
-are visible below
+
+fig road network
+![image](https://user-images.githubusercontent.com/45630165/156719617-b4618255-298c-4412-a8f4-75a93ab70e2c.png)
+
+The result of clasification for parameters n=500 k=4 i=5 road network are visible below
 <<<<<<< Updated upstream
 
 ![image](https://user-images.githubusercontent.com/45630165/153856174-dab4548f-6c28-4746-a386-74ac400897a5.png)
@@ -74,3 +77,26 @@ are visible below
 ![image](https://user-images.githubusercontent.com/45630165/153856174-dab4548f-6c28-4746-a386-74ac400897a5.png)
 
 ##### Classification based the terrain and its passability parameters
+
+The results of classification were visible below. Each figure presents following steps in iterative cicle of k-mean
+clustering with the distances calculated including selected terrain parameters.
+
+graph network
+![image](https://user-images.githubusercontent.com/45630165/156719766-175eeadd-0657-4972-850b-c375a4dda6de.png)
+
+cost of graph lines were estimated based the terrain coverage elements inside square network.
+
+
+classification result:</br>
+
+iter 1: </br>
+![image](https://user-images.githubusercontent.com/45630165/156719832-90d41393-cdf8-437e-9ddf-e033478bc669.png)</br>
+iter 2:</br>
+![image](https://user-images.githubusercontent.com/45630165/156719850-f61795f7-6bc9-41db-b86d-313dec53f2b3.png)</br>
+iter 3:</br>
+![image](https://user-images.githubusercontent.com/45630165/156720185-b1cbe98d-999f-4b8d-bbea-3ab491366a08.png)</br>
+
+
+	class value counter			
+![image](https://user-images.githubusercontent.com/45630165/156720370-faba5bfc-80e1-4ad7-aea2-08d69eed8448.png)
+
