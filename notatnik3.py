@@ -8,33 +8,34 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 try:
+    # nawiązuje połączenie z bazą danych
     connection = psycopg2.connect(user=user, password=password, host=host, port=port, database=database3)
     cursor = connection.cursor()
 
-    # ile punktow
-    n = 500
+    n = 20  # ile punktow
     cursor.execute(
         # f'SELECT id, ST_AsText(geom) FROM public.centroidy_budynki ORDER BY random() limit {n}'
         # f'SELECT id, ST_AsText(geom) FROM public.budynki_wawa_centroidy ORDER BY random() limit {n}'
         f'SELECT id, ST_AsText(geom) FROM public.budynki_wawa_centroidy ORDER BY random() limit {n}'
-
-    )
+    )  # pobieram dane o budynkach z bazy danych
     buildings_table = cursor.fetchall()
-    print(buildings_table)
-    ############################ ROZPAKOWUJE DANE ############################
+    print('\n\n', buildings_table)
 
-    indeksy_budynki = [column[0] for column in buildings_table]
-    # print(indeksy_budynki)
-    wspolrzedna_budynki_X = [float(column[1][6:-1].split()[0]) for column in buildings_table]
-    wspolrzedna_budynki_Y = [float(column[1][6:-1].split()[1]) for column in buildings_table]
+    ############################ ROZPAKOWUJE DANE O BUDYNKACH############################
+    indeksy_budynki = [column[0] for column in buildings_table]  # indeksy budynków
+
+    wspolrzedna_budynki_X = [float(column[1][6:-1].split()[0]) for column in buildings_table]  # współrzędna w prawo
+    wspolrzedna_budynki_Y = [float(column[1][6:-1].split()[1]) for column in buildings_table]  # współrzędna w górę
+
     df = pd.DataFrame(
         list(zip(indeksy_budynki, wspolrzedna_budynki_X, wspolrzedna_budynki_Y)),
         columns=['indeks', 'X', 'Y']
-    )
-    print('\n\ndf z danymi początkowymi: \n', df)
+    )  # df do wygodnego przetwarzania danych
+    print('\n\ndf z danymi początkowymi: \n', df.to_string())
 
-    dane_snapowane = []
     # Snapowanie do węzłów siatki graf wszystkich punktow
+    dane_snapowane = []
+    # petla do znajdowania najbliższych punktów
     for index, coordX, coordY in zip(df.indeks, df.X, df.Y):
         qstring = f'SELECT id, source, ST_AsText(geom), target FROM public."500m_g" ORDER BY geom <-> ST_SetSRID(ST_MakePoint({coordX},{coordY}), 4326) LIMIT 1'
 
@@ -63,7 +64,7 @@ try:
     print('\n\n df z punktami siatki: \n', df_punktow_siatki.to_string())
 
     # ############################# grupowanie ############################
-    k = 4
+    k = 10
     indeksy_punktow_centralnych_w_grupie = np.random.choice(len(indeksy_punktow_siatki), k,
                                                             replace=False)
 
