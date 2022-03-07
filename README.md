@@ -18,6 +18,7 @@ geometric median minimizes Euclidean distances. For instance, better Euclidean s
 and k-medoids.[wikipedia]
 
 Visual explanation of k-mean clustering:
+
 <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/K-means_convergence.gif" alt="My Project GIF" width="300" height="300">
 
 #### General basis of K-mean clustering
@@ -56,7 +57,9 @@ The pandemic point location (random 500 buildings from AOI):
 The result of clasification for parameters:
 n=500 k=4 i=5 (iterations)
 are visible below:
-![image](https://user-images.githubusercontent.com/45630165/153856381-9089c253-c601-404b-9594-c8a7744b4a06.png)
+
+![image](https://user-images.githubusercontent.com/45630165/157050382-aa2448ec-3d0e-4743-aeab-42e447880dea.png)
+
 
 ##### Classification based the euclidean distance in road network
 
