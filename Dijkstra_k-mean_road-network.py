@@ -1,20 +1,20 @@
 import psycopg2
 from DB_connection_functions import *
-from DB_connection_parameters import user, password, host, port, database1
+from DB_connection_parameters import user, password, host, port, database3
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
 try:
-    connection = psycopg2.connect(user=user, password=password, host=host, port=port, database=database1)
+    connection = psycopg2.connect(user=user, password=password, host=host, port=port, database=database3)
     cursor = connection.cursor()
 
     # ile punktów
-    n = 40
+    n = 500
 
     # wybieram losowo 100 punktow z bazy danych (węzły) zapisuje ich indeksy jako liste do zmiennej x
     cursor.execute(
-        f'SELECT id,the_geom AS geom, ST_AsText(the_geom) AS geomDD FROM public."lineEdges_noded_vertices_pgr" ORDER BY random() limit {n}')
+        f'SELECT id,the_geom AS geom, ST_AsText(the_geom) AS geomDD FROM public."00DrogiINTER_noded_vertices_pgr" ORDER BY random() limit {n}')
     dane = cursor.fetchall()
     print('\n sórówka z bazy danych \n', dane)
 
@@ -31,7 +31,7 @@ try:
           coordsDD)
 
     # wybieram losowo k punktów na centroidy do pierwszej iteracji (oznacza to że będzie k grup)
-    k = 5
+    k = 50
     centroids = np.random.choice(len(x), k, replace=False)  # indeksy centroidów
     centroidsID = [x[item] for item in centroids]  # id centroidow
     print('\nIndeksy obiektów wybranych jako centroidy do pierwszej iteracji: \n', centroidsID)
@@ -43,6 +43,7 @@ try:
 
 
     distances = ([[my_func(centroid, item) for centroid in centroidsID] for item in x])
+
     print('\nOdległości po do każdego z centroidów z każdego z punktów: \n', distances)
 
     points = np.array([np.argmin(i) for i in distances])  # wybieram do którego centroidu jest najblizej do punktu
@@ -73,8 +74,8 @@ try:
             # print (index, coordX, coordY)
 
             cursor.execute(
-                f'SELECT v.id, v.the_geom FROM public."lineEdges_noded_vertices_pgr" AS v, public."lineEdges_noded" AS e '
-                f'WHERE v.id = (SELECT id FROM public."lineEdges_noded_vertices_pgr" '
+                f'SELECT v.id, v.the_geom FROM public."00DrogiINTER_noded_vertices_pgr" AS v, public."00DrogiINTER_noded" AS e '
+                f'WHERE v.id = (SELECT id FROM public."00DrogiINTER_noded_vertices_pgr" '
                 f'ORDER BY the_geom <-> ST_SetSRID(ST_MakePoint({coordY}, {coordX}), 4326) LIMIT 1 '
                 f') '
                 f'AND (e.source=v.id OR e.target=v.id) GROUP BY v.id, v.the_geom')

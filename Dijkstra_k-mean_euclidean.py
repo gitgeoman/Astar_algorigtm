@@ -39,7 +39,7 @@ try:
     pca = PCA(2)
     df = pca.fit_transform(tablica_dane)
     print('>>>>>>>>>>>>>>>>>>>>> df\n', df)
-    label = kmeans(tablica_dane, 5, 500)
+    label = kmeans(tablica_dane, 4, 1)
     print('label ===================\n', label)
 
     u_labels = np.unique(label)
