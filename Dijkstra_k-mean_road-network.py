@@ -10,7 +10,7 @@ try:
     cursor = connection.cursor()
 
     n = 1000  # ile punktów
-    k = 20  # ile klas
+    k = 10  # ile klas
     no_of_iterations = 15  # ile iteracji
 
     # wybieram n budynkow (centroidy) z bazy danych
@@ -211,7 +211,12 @@ try:
                                          'coordsX', 'distances', 'klasyfikacja'])
         print('\n df wynikowy dla bierzacej iteracji \n', df_petla.to_string())
         list_of_dfs.append(df_petla)
-
+        # obliczam współrzędne dla nowych centroidów
+        df_nowe_centroidy = pd.DataFrame(
+            [df_petla.groupby('klasyfikacja')['coordsX'].mean(),
+             df_petla.groupby('klasyfikacja')['coordsY'].mean()]
+        ).T
+        print('\n średnie współrzędne nowych centroidów \n\n', df_nowe_centroidy.to_string())
     # przegląd danych
     print(' TU WYŚWIETLAM KOMPLET WYNIKÓW W POSTACI DF>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>. \n', )
 
