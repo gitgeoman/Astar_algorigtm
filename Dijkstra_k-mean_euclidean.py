@@ -14,7 +14,7 @@ try:
     cursor = connection.cursor()
 
     n = 1000  # ile punktów
-    k = 20  # ile klas
+    k = 5  # ile klas
     no_of_iterations = 15  # ile iteracji
 
     cursor.execute(
@@ -27,7 +27,7 @@ try:
     )
 
     dane = cursor.fetchall()
-    print('\n sórówka z bazy danych \n', dane)
+    # print('\n sórówka z bazy danych \n', dane)
 
     # rozpakowuje dane
     x = [item[0] for item in dane]  # indeksy punktów
@@ -43,7 +43,7 @@ try:
     pca = PCA(2)
     df = pca.fit_transform(tablica_dane)
     print('>>>>>>>>>>>>>>>>>>>>> df\n', df)
-    label = kmeans(tablica_dane, 4, 1)
+    label = kmeans(tablica_dane, 5, 500)
     print('label ===================\n', label)
 
     u_labels = np.unique(label)
@@ -53,7 +53,7 @@ try:
     plt.grid
     plt.show()
 
-    print('askjdfhkajsdfhkalsjfdhkaljsdh ', df)
+    print('To jest df ', ())
 
 
 except(Exception, psycopg2.Error) as error:
